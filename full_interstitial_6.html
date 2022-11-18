@@ -1,0 +1,216 @@
+<html>
+    <head>
+        <title>Journey Banner - Full Interstitial 6</title>
+        <link href='stylesheet.css' rel='stylesheet'>
+        <link rel='icon' type='image/png' href='https://icon-library.com/images/surf-icon/surf-icon-16.jpg'>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="branch:deeplink:categoryId" content="12345" data-react-helmet="true">
+        <meta name="branch:deeplink:categoryName" content="META">        
+        <script>
+            // load Branch
+            (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
+            // init Branch
+            branch.init('key_live_od5SXx4hhteUKbFDaftczcmkwAdgiRyY');
+        </script>
+    </head>
+    <body>
+        <h2>Web SDK Demo</h2> 
+        <div class="container">
+            <em>Launch Journey by viewing on mWeb!</em>
+        </div>
+        <div class="containerBtn">
+            <!-- Deep Link -->
+            <button class="eventBtn" onclick="createDeepLink()">Create Link</button>
+            <button class="eventBtn" onclick="shareDeepLink()">Share Link</button>
+            <button class="eventBtn" onclick="readDeepLink()">Read Link Data</button>
+            <button class="eventBtn" onclick="routeWithMetatags()" id="routeBtn">Route with Metatags</button>
+            <!-- Track Events -->
+            <button class="eventBtn" onclick="trackCommerceEvent()">Purchase Item</button>
+            <button class="eventBtn" onclick="trackContentEvent()">View Item</button>
+            <button class="eventBtn" onclick="trackLifeCycleEvent()">Complete Registration</button>
+            <button class="eventBtn" onclick="trackCustomEvent()">Apply Coupon</button>
+            <!-- Track User -->
+            <button class="eventBtn" onclick="logoutUser()">Logout</button>
+            <button class="eventBtn" onclick="loginUser()">Login</button>
+        </div>
+        <div class="containerInfo">
+            Session Info
+            <p id="info1"></p>
+            <p id="info2"></p>
+            <p id="info3"></p>
+        </div>
+        <script>
+            function createDeepLink(){
+                var linkData = {
+                    channel: 'desktop',
+                    feature: 'dashboard',
+                    campaign: 'deep link 123',
+                    stage: 'new user',
+                    tags: [ 'tag1', 'tag2', 'tag3' ],
+                    data: {
+                        'custom_bool': true,
+                        'custom_int': Date.now(),
+                        'custom_string': 'hello',
+                        '$og_title': 'Title',
+                        '$og_description': 'Description',
+                        '$og_image_url':'http://lorempixel.com/400/400'
+                    }
+                };
+                branch.link(linkData, function(err, link) {
+                console.log(link, linkData);
+                document.getElementById("info1").innerHTML = link;
+                document.getElementById("info2").innerHTML = JSON.stringify(linkData, null, 4)
+                document.getElementById("info3").innerHTML = " "
+                });
+            }
+            function shareDeepLink(){
+                var linkData = {
+                    channel: 'desktop',
+                    feature: 'dashboard',
+                    campaign: 'share 123',
+                    stage: 'new user',
+                    tags: [ 'tag1', 'tag2', 'tag3' ],
+                    data: {
+                        'custom_bool': true,
+                        'custom_int': Date.now(),
+                        'custom_string': 'hello',
+                        '$og_title': 'Title',
+                        '$og_description': 'Description',
+                        '$og_image_url':'http://lorempixel.com/400/400'
+                    }
+                };
+                branch.link(linkData, function(err, link) {
+                console.log(link);
+                document.getElementById("info1").innerHTML = link;
+                document.getElementById("info2").innerHTML = JSON.stringify(linkData, null, 4)
+                document.getElementById("info3").innerHTML = " "
+                });
+            }
+            function readDeepLink(){
+                branch.data(function(err, data) {
+                console.log(err, data);
+                document.getElementById("info1").innerHTML = JSON.stringify(data, null, 4);
+                document.getElementById("info2").innerHTML = " "
+                document.getElementById("info3").innerHTML = " "
+                });
+            }
+            // Scrap web URL for deep link data on link creation
+            // https://help.branch.io/developers-hub/docs/web-advanced-features#host-deep-link-data
+            function routeWithMetatags(){
+                window.location.href = "https://alicia.app.link/profile"
+            }
+            function trackCommerceEvent(){
+                var event_and_custom_data = {
+                    "alias": "purchase",
+                    "transaction_id": "tras_Id_1232343434",
+                    "currency": "USD",
+                    "revenue": 180.2,
+                    "shipping": 10.5,
+                    "tax": 13.5,
+                    "coupon": "promo-1234",
+                    "affiliation": "high_fi",
+                    "description": "Preferred purchase",
+                };
+                var content_items = [
+                    {
+                    "$canonical_identifier": "nike/1234",
+                    "$canonical_url": "https://branch.io/item/12345",
+                    "$og_title": "Nike Shoe",
+                    "$content_schema": "COMMERCE_PRODUCT",
+                    "$quantity": 1,
+                    "$price": 101.2,
+                    "$sku": "1101123445",
+                    "$product_name": "Runner",
+                    "$product_brand": "Nike",
+                    "$product_category": "Sporting Goods",
+                    "$product_variant": "XL",
+                    "$condition": "NEW",
+                    }
+                ];
+                var customer_event_alias = "my commerce event alias";
+
+                branch.logEvent(
+                    "PURCHASE",
+                    event_and_custom_data,
+                    content_items,
+                    customer_event_alias,
+                    function(err) { console.log(err); 
+
+                    document.getElementById("info1").innerHTML = customer_event_alias;                 
+                    document.getElementById("info2").innerHTML = JSON.stringify(event_and_custom_data, null, 4);
+                    document.getElementById("info3").innerHTML = JSON.stringify(content_items, null, 4);
+                    }
+                );
+            }
+            function trackContentEvent(){
+                var event_and_custom_data = {
+                    "description": "Item page",
+                    "Custom_Property_Key1": "Custom_Property_val1",
+                    "Custom_Event_Property_Key2": "Custom_Event_Property_val2"
+                };
+                var customer_event_alias = "pageview";
+
+                branch.logEvent(
+                    "VIEW_ITEMS",
+                    event_and_custom_data,
+                    [],
+                    customer_event_alias,
+                    function(err) { console.log(err); 
+                    document.getElementById("info1").innerHTML = customer_event_alias;                 
+                    document.getElementById("info2").innerHTML = JSON.stringify(event_and_custom_data, null, 4);
+                    document.getElementById("info3").innerHTML = " "
+                    }
+                );
+            }
+            function trackLifeCycleEvent(){
+                var event_and_custom_data = {
+                    "content_type": "email registered",
+                }
+                var customer_event_alias = "complete registration";
+
+                branch.logEvent(
+                    "COMPLETE_REGISTRATION",
+                    event_and_custom_data,
+                    [],
+                    customer_event_alias,
+                    function(err) { console.log(err); 
+                    document.getElementById("info1").innerHTML = customer_event_alias;                 
+                    document.getElementById("info2").innerHTML = JSON.stringify(event_and_custom_data, null, 4);
+                    document.getElementById("info3").innerHTML = " ";
+                    }
+                );
+            }
+            function trackCustomEvent(){
+                var custom_data = {
+                    "transaction_id": "Custom_Event_Property_val1",
+                    "Custom_Event_Property_Key2": "Custom_Event_Property_val2"
+                };
+                branch.logEvent(
+                    'COUPON_APPLIED',
+                    custom_data,
+                    function(err) { console.log(err); 
+                    document.getElementById("info1").innerHTML = JSON.stringify(custom_data, null, 4);                 
+                    document.getElementById("info2").innerHTML = " ";
+                    document.getElementById("info3").innerHTML = " ";
+                    }
+                );
+            }
+            function logoutUser(){
+                branch.logout(
+                    function(err,data) {
+                    console.log(err,data)
+                    document.getElementById("info1").innerHTML = "Session Logout"                
+                    document.getElementById("info2").innerHTML = " ";
+                    document.getElementById("info3").innerHTML = " ";
+                });
+            }
+            function loginUser(){
+                branch.setIdentity("chao-123");
+                document.getElementById("info1").innerHTML = "Identity Set"              
+                document.getElementById("info2").innerHTML = " ";
+                document.getElementById("info3").innerHTML = " ";   
+            }
+        </script>
+    </body>
+</html>

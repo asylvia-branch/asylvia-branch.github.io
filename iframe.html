@@ -1,0 +1,263 @@
+<html>
+    <head>
+        <style type="text/css" id="branch-css">body {
+            overflow: hidden;
+            height: 100%;
+            -webkit-overflow-scrolling: touch;
+            /* Fix for mobile Safari */
+            touch-action: none;
+            /* Prevent default scrolling */
+            overscroll-behavior: none;
+            /* Prevent overscroll */
+            margin: 0;
+          }
+          
+          body.no-scroll {
+            overflow: hidden;
+          }
+          
+          /* Branch banner */
+          
+          #branch-banner {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            margin: 0;
+            z-index: 99999;
+            /* Ensure it's on top */
+            font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+            transition: all 0.25s ease;
+            line-height: normal;
+            overflow: visible;
+            visibility: visible;
+            outline: none;
+            /* Remove focus outline if needed */
+          }
+          
+          /* Branch banner close button */
+          
+          #branch-banner .branch-banner-close {
+            height: 10%;
+            width: 30%;
+            text-align: center;
+            border-radius: 40px;
+            background-color: #1E9E00;
+            font-size: 5vw;
+            line-height: 5vw;
+            left: 55%;
+            top: 70%;
+            position: absolute;
+            font-weight: 500;
+            padding: 12px 20px;
+            letter-spacing: 0;
+            background: rgba(226, 226, 226, 1);
+            z-index: 2;
+            color: rgba(0, 0, 0, 1);
+            cursor: pointer;
+          }
+          
+          /* App icons */
+          
+          .app-icon {
+            border-radius: 12px;
+            position: absolute;
+            left: 5%;
+          }
+          
+          /* IMDb and Chrome app icons */
+          
+          #imdb-icon,
+          #chrome-icon {
+            width: 12vw;
+            height: 12vw;
+          }
+          
+          #imdb-icon {
+            top: 40%;
+          }
+          
+          #chrome-icon {
+            top: 70%;
+          }
+          
+          /* IMDb and Chrome text */
+          
+          #imdb-text,
+          #chrome-text {
+            position: absolute;
+            left: 22%;
+            font-size: 4.5vw;
+          }
+          
+          #imdb-text {
+            top: 45%;
+          }
+          
+          #chrome-text {
+            top: 75%;
+          }
+          
+          /* Scrim overlay */
+          
+          .scrim {
+            width: 100%;
+            height: 100vh;
+            background-color: #FFFFFF;
+            overflow: visible;
+            z-index: 99998;
+          }
+          
+          /* Background for modal */
+          
+          .background {
+            width: 100%;
+            height: 100%;
+            background-color: #18191A00;
+            overflow: visible;
+            z-index: 99998;
+          }
+          
+          /* Branch banner title */
+          
+          #branch-banner .branch-banner-title {
+            color: #202020;
+            font-size: 6vw;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 32px;
+            padding-top: 1%;
+            margin-top: 20px;
+            /* Add margin to push the text down */
+            min-height: 20px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+          }
+          
+          /* Branch banner button */
+          
+          #branch-banner .branch-banner-button {
+            height: 10%;
+            width: 30%;
+            border-radius: 40px;
+            background-color: #1E9E00;
+            font-weight: 500;
+            font-size: 5vw;
+            line-height: 5vw;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 20px;
+            left: 55%;
+            top: 40%;
+            position: absolute;
+            color: rgba(16, 0, 0, 1);
+            letter-spacing: 0;
+            background: rgba(245, 197, 24, 1);
+            cursor: pointer;
+          }
+          
+          /* Fullscreen banner content */
+          
+          #branch-banner .branch-banner-content {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #18191ADD;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          /* Bottom content container */
+          
+          #branch-banner .branch-banner-content-2 {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            width: 100vw;
+            height: 32vh;
+            background: #FFF;
+            border-top-left-radius: 8%;
+            border-top-right-radius: 8%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+          }
+          
+          /* Banner content box for right content (title, buttons) */
+          
+          #branch-banner .branch-banner-content-box-right {
+            width: 100%;
+            margin: auto;
+            position: fixed;
+          }
+          
+          /* Ensure body overflow is hidden when no-scroll class is active */
+          
+          body.no-scroll {
+            overflow: hidden;
+          }</style>
+    </head>
+    <body class="branch-banner-ios"><div data-id="1" id="branch-banner" class="branch-animation" role="dialog" tabindex="-1">
+        <div data-id="2" class="branch-banner-content" role="document" tabindex="0" aria-label="Modal Dialog Container" style="height: 667px;">
+            <div data-id="3" class="branch-banner-content-2">
+                <div data-id="4" class="background">
+                    <div data-id="5" class="branch-banner-content-box-right">
+                        <div data-id="6" id="branch-banner-title" class="branch-banner-title">Get 10% off</div>
+                    </div>
+                    <div data-id="7" id="branch-mobile-action" class="branch-banner-button" role="button" aria-label="GETT" tabindex="0">GETT</div>
+                    <img data-id="8" title="IMDb App Icon" id="imdb-icon" class="app-icon" src="https://play-lh.googleusercontent.com/sb30umyAPj9A4ixl4jnPJO15ET-mo4TihKOI0xwFzRbxOfZo6fozeKmAjf8Lhl3mqHY=w480-h960-rw" alt="" aria-label="IMDb App Icon">
+                    <div data-id="9" id="imdb-text" role="text">IMDb App</div>
+                    <img data-id="10" title="Web Browser Icon" id="chrome-icon" class="app-icon" src="https://m.media-amazon.com/images/G/01/baovtran/icon_web_svg.svg" alt="" aria-label="Web Browser Icon">
+                    <div data-id="11" id="chrome-text" role="text">Web Browser</div>
+                    <div data-id="12" class="branch-banner-close" id="branch-banner-close1" role="button" aria-label="Close banner" tabindex="0">
+                        Continue
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <meta name="accessibility" content="wcag">
+    <script type="text/javascript">
+                var focusableElements = 'button, [href], input, select, textarea, [role="button"], h1, [role="text"], .branch-banner-content';
+                var modal = document.getElementById('branch-banner');
+                var focusableContent = modal.querySelectorAll(focusableElements);
+                var focusElementIdx = 0;
+    
+                function handleTabKey(e) {
+                    var isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+                
+                    if (!isTabPressed) {
+                        return;
+                    }
+    
+                    if (e.shifKey) {
+                        if (focusElementIdx <= 0) {
+                            focusElementIdx = focusableContent.length - 1;
+                        } else {
+                            focusElementIdx = focusElementIdx - 1;
+                        }
+                    } else {
+                        if (focusElementIdx >= focusableContent.length - 1) {
+                            focusElementIdx = 0;
+                        } else {
+                            focusElementIdx = focusElementIdx + 1;
+                        }
+                    }
+    
+                    focusableContent[focusElementIdx].focus();
+                    e.preventDefault();
+                }
+    
+                function autoFocus(delay) {
+                    setTimeout(function() { focusableContent[focusElementIdx].focus() }, delay);
+                }
+    
+                document.addEventListener('keydown', handleTabKey);
+                autoFocus(100);
+                
+    </script>
+    </body>
+</html>
